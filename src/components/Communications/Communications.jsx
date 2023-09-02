@@ -1,3 +1,5 @@
+import "./Communications.css";
+
 export const Communications = () => {
   return (
     <div className="comunications">

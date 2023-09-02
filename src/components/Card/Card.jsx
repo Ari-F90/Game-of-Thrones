@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import "./Card.css";
 export const Card = ({ item }) => {
   console.log(item.name);
   return (
