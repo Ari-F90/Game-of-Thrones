@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "./Card.css";
 export const Card = ({ item }) => {
-  console.log(item.name);
+  console.log(item);
   return (
     <li className="character col">
       <div className="card character__card">
@@ -39,7 +39,11 @@ export const Card = ({ item }) => {
             </div>
           </div>
         </div>
-        <i className="emoji"></i>
+        {item.kingdomYears && <i className="emoji">👑</i>}
+        {item.weapon && <i className="emoji">🗡</i>}
+        {item.weapon && <i className="emoji">🗡</i>}
+        {item.advisedPerson && <i className="emoji">🎓</i>}
+        {item.servility && <i className="emoji">🛡</i>}
       </div>
     </li>
   );
