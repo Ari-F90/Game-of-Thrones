@@ -2,6 +2,9 @@
 export class Character {
   isLive;
   constructor(name, family, age) {
+    this.name = name;
+    this.family = family;
+    this.age = age;
     this.isLive = true;
   }
 

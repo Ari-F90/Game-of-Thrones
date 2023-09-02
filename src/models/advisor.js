@@ -4,6 +4,7 @@ import { Character } from "./character";
 export class Advisor extends Character {
   constructor(name, family, age, advisedPerson) {
     super(name, family, age);
+    this.advisedPerson = advisedPerson;
   }
   sayHello() {
     super.sayHello();
