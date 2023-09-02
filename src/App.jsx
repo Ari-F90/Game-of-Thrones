@@ -1,7 +1,11 @@
-import { characters } from "../src/mocks/characters";
+import { CardList } from "./components/CardList";
+import { Communications } from "./components/Communications";
 
 export const App = () => {
-  return <></>;
+  return (
+    <>
+      <CardList />
+      <Communications />
+    </>
+  );
 };
-
-console.log(characters);
