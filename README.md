@@ -1,1 +1,1 @@
-# GoT DOM
+# GoT Interface
