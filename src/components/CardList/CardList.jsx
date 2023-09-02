@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { characters } from "../mocks/characters";
-import { Card } from "./Card";
+import { characters } from "../../mocks/characters";
+import { Card } from "../Card/Card";
+import "./CardList.css";
 export const CardList = () => {
   console.log(characters[0]);
   return (
