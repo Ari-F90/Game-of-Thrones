@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export const Card = ({ item }) => {
   const [live, setLive] = useState({ live: item.isLive });
+  const [talk, setTalk] = useState({ talk: item.sayHello() });
 
   const handleDie = () => {
     if (live) {
@@ -14,13 +15,14 @@ export const Card = ({ item }) => {
       item.alive();
     }
     setLive(!live);
-    console.log(item);
   };
 
   const handleTalk = () => {
-    item.sayHello();
+    setTalk(talk);
+    return item.sayHello();
   };
-  useEffect(() => {}, [live]);
+
+  useEffect(() => {}, [live, talk]);
 
   return (
     <li className="character col">
@@ -41,7 +43,8 @@ export const Card = ({ item }) => {
 
         <div className="card-body">
           <h2 className="character__name card-title h4">
-            {item.name} {item.family}
+            {item.name}
+            {item.family}
           </h2>
           <div className="character__info">
             <ul className="list-unstyled">
