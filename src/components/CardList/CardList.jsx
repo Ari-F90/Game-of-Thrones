@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { characters } from "../../mocks/characters";
+
+import { useCharacters } from "../../hooks/useCharacters";
 import { Card } from "../Card/Card";
+
 import "./CardList.css";
 export const CardList = () => {
-  console.log(characters[0]);
+  const { characters } = useCharacters();
   return (
     <ul className="characters-list row list-unstyled">
       {characters.map((item, x) => (

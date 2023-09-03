@@ -2,15 +2,12 @@
 /* eslint-disable react/prop-types */
 import "./Card.css";
 import { useState, useEffect } from "react";
+import { useCharacters } from "../../hooks/useCharacters";
+
 export const Card = ({ item }) => {
-  const [live, setLive] = useState({ live: item.isLive });
+  const { live, handleDie, handleTalk, talk } = useCharacters();
 
-  const handleDie = () => {
-    item.die();
-    setLive(!live);
-  };
-
-  useEffect(() => {}, [live]);
+  useEffect(() => {}, [live, talk]);
 
   return (
     <li className="character col">
@@ -66,7 +63,9 @@ export const Card = ({ item }) => {
               )}
             </ul>
             <div className="character__actions">
-              <button className="character__action btn">Habla</button>
+              <button onClick={handleTalk} className="character__action btn">
+                Habla
+              </button>
               <button onClick={handleDie} className="character__action btn">
                 {live ? "Muere" : "Resucita"}
               </button>
