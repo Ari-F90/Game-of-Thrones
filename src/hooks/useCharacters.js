@@ -1,20 +1,14 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { characters } from "../mocks/characters";
 
 export const useCharacters = () => {
-  const [character] = characters;
+  // const [talk, setTalk] = useState({ talk: item.sayHello });
 
-  const [live, setLive] = useState({ live: character.isLive });
-  const [talk, setTalk] = useState({ talk: character.sayHello() });
-  const handleDie = () => {
-    character.die();
-    setLive(!live);
-  };
+  // const handleTalk = () => {
+  //   item.sayHello();
 
-  const handleTalk = () => {
-    console.log(character.sayHello());
-    setTalk(talk);
-  };
+  //   setTalk(talk);
+  // };
 
-  return { character, characters, live, handleDie, talk, handleTalk };
+  return { characters };
 };

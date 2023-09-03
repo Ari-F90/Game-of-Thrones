@@ -3,10 +3,11 @@ import { useCharacters } from "../../hooks/useCharacters";
 import "./Communications.css";
 
 export const Communications = () => {
-  const { character } = useCharacters();
+  // const { character, talk } = useCharacters();
   return (
     <div className="comunications">
-      <p className="comunications__text display-1">{character.sayHello}</p>
+      <p className="comunications__text display-1"></p>
+
       <img
         className="comunications__picture"
         src="img/no-one.jpg"

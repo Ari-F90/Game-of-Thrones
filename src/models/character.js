@@ -14,4 +14,7 @@ export class Character {
   die() {
     this.isLive = false;
   }
+  alive() {
+    this.isLive = true;
+  }
 }

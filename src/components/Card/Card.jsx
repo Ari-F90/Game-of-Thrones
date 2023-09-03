@@ -2,12 +2,25 @@
 /* eslint-disable react/prop-types */
 import "./Card.css";
 import { useState, useEffect } from "react";
-import { useCharacters } from "../../hooks/useCharacters";
+// import { useCharacters } from "../../hooks/useCharacters";
 
 export const Card = ({ item }) => {
-  const { live, handleDie, handleTalk, talk } = useCharacters();
+  const [live, setLive] = useState({ live: item.isLive });
 
-  useEffect(() => {}, [live, talk]);
+  const handleDie = () => {
+    if (live) {
+      item.die();
+    } else {
+      item.alive();
+    }
+    setLive(!live);
+    console.log(item);
+  };
+
+  const handleTalk = () => {
+    item.sayHello();
+  };
+  useEffect(() => {}, [live]);
 
   return (
     <li className="character col">
