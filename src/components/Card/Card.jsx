@@ -3,25 +3,32 @@
 import "./Card.css";
 import { useState, useEffect } from "react";
 export const Card = ({ item }) => {
-  const [live, setLive] = useState(item.isLive);
+  const [live, setLive] = useState({ live: item.isLive });
 
   const handleDie = () => {
     item.die();
-    setLive(!item.isLive);
+    setLive(!live);
   };
 
-  useEffect(() => {
-    handleDie;
-  }, [live]);
+  useEffect(() => {}, [live]);
 
   return (
     <li className="character col">
       <div className="card character__card">
-        <img
-          src={`../../public/img/${item.name}.jpeg`}
-          alt="Nombre y familia del personaje"
-          className="character__picture card-img-top"
-        />
+        {live ? (
+          <img
+            src={`../../public/img/${item.name}.jpeg`}
+            alt="Nombre y familia del personaje"
+            className="character__picture card-img-top"
+          />
+        ) : (
+          <img
+            src={`../../public/img/${item.name}.jpeg`}
+            alt="Nombre y familia del personaje"
+            className="character__picture-down"
+          />
+        )}
+
         <div className="card-body">
           <h2 className="character__name card-title h4">
             {item.name} {item.family}
@@ -31,7 +38,7 @@ export const Card = ({ item }) => {
               <li>Edad: {item.age} años</li>
               <li>
                 Estado: {item.isLive}
-                {item.isLive ? (
+                {live ? (
                   <i className="fas fa-thumbs-up"></i>
                 ) : (
                   <i className="fas fa-thumbs-down"></i>
@@ -61,7 +68,7 @@ export const Card = ({ item }) => {
             <div className="character__actions">
               <button className="character__action btn">Habla</button>
               <button onClick={handleDie} className="character__action btn">
-                Muere
+                {live ? "Muere" : "Resucita"}
               </button>
             </div>
           </div>
