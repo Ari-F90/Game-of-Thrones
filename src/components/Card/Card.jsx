@@ -1,7 +1,19 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import "./Card.css";
+import { useState, useEffect } from "react";
 export const Card = ({ item }) => {
-  console.log(item);
+  const [live, setLive] = useState(item.isLive);
+
+  const handleDie = () => {
+    item.die();
+    setLive(!item.isLive);
+  };
+
+  useEffect(() => {
+    handleDie;
+  }, [live]);
+
   return (
     <li className="character col">
       <div className="card character__card">
@@ -19,23 +31,38 @@ export const Card = ({ item }) => {
               <li>Edad: {item.age} años</li>
               <li>
                 Estado: {item.isLive}
-                <i className="fas fa-thumbs-down"></i>
-                <i className="fas fa-thumbs-up"></i>
+                {item.isLive ? (
+                  <i className="fas fa-thumbs-up"></i>
+                ) : (
+                  <i className="fas fa-thumbs-down"></i>
+                )}
               </li>
             </ul>
           </div>
           <div className="character__overlay">
             <ul className="list-unstyled">
-              <li>Años de reinado: {item.kingdomYears}</li>
-              <li>Arma: {item.weapon}</li>
-              <li>Destreza: {item.skill}</li>
-              <li>Peloteo: {item.servility}</li>
-              <li>Asesora a: {item.advisedPerson}</li>
-              <li>Sirve a: {item.servedPerson}</li>
+              {item.kingdomYears && (
+                <li>Años de reinado: {item.kingdomYears}</li>
+              )}
+              {item.weapon && (
+                <>
+                  <li>Arma: {item.weapon}</li>
+                  <li>Destreza: {item.skill}</li>
+                </>
+              )}
+              {item.advisedPerson && <li>Asesora a: {item.advisedPerson}</li>}
+              {item.servility && (
+                <>
+                  <li>Peloteo: {item.servility}</li>
+                  <li>Sirve a: {item.servedPerson}</li>
+                </>
+              )}
             </ul>
             <div className="character__actions">
-              <button className="character__action btn">habla</button>
-              <button className="character__action btn">muere</button>
+              <button className="character__action btn">Habla</button>
+              <button onClick={handleDie} className="character__action btn">
+                Muere
+              </button>
             </div>
           </div>
         </div>
